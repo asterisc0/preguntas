@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comentarios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Deja tu comentario</h1>
+
+    <form id="commentForm">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="comment">Comentario:</label>
+        <textarea id="comment" name="comment" rows="4" required></textarea>
+
+        <button type="button" onclick="submitComment()">Enviar comentario</button>
+    </form>
+
+    <div id="comments">
+        <!-- Los comentarios se mostrarán aquí -->
+    </div>
+
+    <script>
+        function submitComment() {
+            var name = document.getElementById("name").value;
+            var comment = document.getElementById("comment").value;
+
+            if (name && comment) {
+                var commentDiv = document.createElement("div");
+                commentDiv.innerHTML = "<strong>" + name + ":</strong> " + comment;
+                document.getElementById("comments").appendChild(commentDiv);
+
+                // Aquí podrías enviar los datos al servidor utilizando AJAX para almacenarlos en una base de datos
+                // y realizar otras operaciones necesarias.
+            } else {
+                alert("Por favor, completa todos los campos.");
+            }
+        }
+    </script>
+
+</body>
+</html>
